@@ -26,8 +26,8 @@ import com.streamsets.pipeline.api.StageDef;
 
 @StageDef(
     version = 1,
-    label = "Sample Processor",
-    description = "",
+    label = "JSON Validator",
+    description = "Validates JSON object records with a specified schema",
     icon = "default.png",
     onlineHelpRefUrl = ""
 )
