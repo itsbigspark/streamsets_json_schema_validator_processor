@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.stage.processor.sample;
+package dev.bigspark.stage.processor.sample;
 
 import com.streamsets.pipeline.api.Field;
 import com.streamsets.pipeline.api.Record;

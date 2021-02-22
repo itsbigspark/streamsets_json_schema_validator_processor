@@ -1,4 +1,4 @@
-package com.example.jsonschema;
+package dev.bigspark.jsonschema;
 
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;

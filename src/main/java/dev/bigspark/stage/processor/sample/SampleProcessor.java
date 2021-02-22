@@ -17,11 +17,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.stage.processor.sample;
+package dev.bigspark.stage.processor.sample;
 
-import com.example.stage.lib.sample.Errors;
+import dev.bigspark.stage.lib.sample.Errors;
 
-import com.streamsets.pipeline.api.Field;
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.base.SingleLaneRecordProcessor;
@@ -34,7 +33,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Random;
 
 public abstract class SampleProcessor extends SingleLaneRecordProcessor {
   private static final Logger LOG = LoggerFactory.getLogger(SampleProcessor.class);
