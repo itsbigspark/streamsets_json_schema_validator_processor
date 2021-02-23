@@ -17,25 +17,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.bigspark.stage.processor.sample;
+package dev.bigspark.stage.processor.jsonvalidator;
 
+import com.streamsets.pipeline.api.ConfigDef;
+import com.streamsets.pipeline.api.ConfigGroups;
 import com.streamsets.pipeline.api.GenerateResourceBundle;
-import com.streamsets.pipeline.api.Label;
+import com.streamsets.pipeline.api.StageDef;
 
+@StageDef(
+    version = 1,
+    label = "JSON Validator",
+    description = "Validates JSON object records with a specified schema",
+    icon = "default.png",
+    onlineHelpRefUrl = ""
+)
+@ConfigGroups(Groups.class)
 @GenerateResourceBundle
-public enum Groups implements Label {
-  SAMPLE("Sample"),
-  ;
+public class SampleDProcessor extends SampleProcessor {
 
-  private final String label;
-
-  private Groups(String label) {
-    this.label = label;
-  }
+  @ConfigDef(
+      required = true,
+      type = ConfigDef.Type.STRING,
+      defaultValue = "default",
+      label = "JSON Validator Config",
+      displayPosition = 10,
+      group = "SAMPLE"
+  )
+  public String config;
 
   /** {@inheritDoc} */
   @Override
-  public String getLabel() {
-    return this.label;
+  public String getConfig() {
+    return config;
   }
+
 }

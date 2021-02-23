@@ -26,7 +26,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.damnhandy:handy-uri-templates:2.1.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: joda-time:joda-time:2.10.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.re2j:re2j:1.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20200518" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20201115" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.streamsets:streamsets-datacollector-sdk:3.20.0" level="project" />

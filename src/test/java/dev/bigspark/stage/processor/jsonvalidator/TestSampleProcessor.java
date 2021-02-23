@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.bigspark.stage.processor.sample;
+package dev.bigspark.stage.processor.jsonvalidator;
 
 import com.streamsets.pipeline.api.Field;
 import com.streamsets.pipeline.api.Record;
