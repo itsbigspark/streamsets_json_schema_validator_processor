@@ -39,7 +39,7 @@ public class SampleDProcessor extends SampleProcessor {
       required = true,
       type = ConfigDef.Type.STRING,
       defaultValue = "default",
-      label = "Sample Config",
+      label = "JSON Validator Config",
       displayPosition = 10,
       group = "SAMPLE"
   )

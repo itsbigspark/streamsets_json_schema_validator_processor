@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../jsonvalidator/samplestage.iml" filepath="$PROJECT_DIR$/../jsonvalidator/samplestage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/samplestage.iml" filepath="$PROJECT_DIR$/samplestage.iml" />
     </modules>
   </component>
 </project>
