@@ -26,7 +26,7 @@ import com.streamsets.pipeline.api.GenerateResourceBundle;
 public enum Errors implements ErrorCode {
 
   SAMPLE_00("A configuration is invalid because: {}"),
-  SAMPLE_01("Specific reason writing record failed: {}"),
+  SAMPLE_01("The JSON object supplied is invalid: {}"),
   ;
   private final String msg;
 

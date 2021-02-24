@@ -45,6 +45,16 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
   )
   public String config;
 
+  @ConfigDef(
+          required = true,
+          type = ConfigDef.Type.STRING,
+          defaultValue = "default",
+          label = "JSON Schema file",
+          displayPosition = 10,
+          group = "SAMPLE"
+  )
+  public String schema;
+
   /** {@inheritDoc} */
   @Override
   public String getConfig() {

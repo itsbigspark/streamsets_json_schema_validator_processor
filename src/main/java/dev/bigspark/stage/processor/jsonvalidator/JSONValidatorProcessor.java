@@ -19,6 +19,7 @@
  */
 package dev.bigspark.stage.processor.jsonvalidator;
 
+import com.streamsets.pipeline.api.base.OnRecordErrorException;
 import dev.bigspark.stage.lib.sample.Errors;
 
 import com.streamsets.pipeline.api.Record;
@@ -27,6 +28,7 @@ import com.streamsets.pipeline.api.base.SingleLaneRecordProcessor;
 
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
@@ -41,6 +43,9 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
    * Gives access to the UI configuration of the stage provided by the {@link JSONValidatorDProcessor} class.
    */
   public abstract String getConfig();
+
+  JSONObject jsonSchema = new JSONObject(
+          new JSONTokener(JSONValidatorProcessor.class.getResourceAsStream("/schema.json")));
 
   /** {@inheritDoc} */
   @Override
@@ -72,14 +77,16 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
   protected void process(Record record, SingleLaneBatchMaker batchMaker) throws StageException {
     LOG.info("Processing a record: {}", record);
 
-    JSONObject jsonSchema = new JSONObject(
-            new JSONTokener(JSONValidatorProcessor.class.getResourceAsStream("/schema.json")));
-    JSONObject jsonSubject = new JSONObject(
-            new JSONTokener(record.get("/fields").getValue().toString()));
-    LOG.info("JSON Subject: {}", jsonSubject);
+    try {
+      JSONObject jsonSubject = new JSONObject(
+              new JSONTokener(record.get("/fields").getValue().toString()));
+      LOG.info("JSON Subject: {}", jsonSubject);
 
-    Schema schema = SchemaLoader.load(jsonSchema);
-    schema.validate(jsonSubject);
+      Schema schema = SchemaLoader.load(jsonSchema);
+      schema.validate(jsonSubject);
+    } catch (JSONException e) {
+      throw new OnRecordErrorException(record, Errors.SAMPLE_01, e);
+    }
 
     LOG.info("Output record: {}", record);
 
