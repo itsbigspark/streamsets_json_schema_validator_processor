@@ -34,11 +34,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public abstract class SampleProcessor extends SingleLaneRecordProcessor {
-  private static final Logger LOG = LoggerFactory.getLogger(SampleProcessor.class);
+public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
+  private static final Logger LOG = LoggerFactory.getLogger(JSONValidatorProcessor.class);
 
   /**
-   * Gives access to the UI configuration of the stage provided by the {@link SampleDProcessor} class.
+   * Gives access to the UI configuration of the stage provided by the {@link JSONValidatorDProcessor} class.
    */
   public abstract String getConfig();
 
@@ -73,7 +73,7 @@ public abstract class SampleProcessor extends SingleLaneRecordProcessor {
     LOG.info("Processing a record: {}", record);
 
     JSONObject jsonSchema = new JSONObject(
-            new JSONTokener(SampleProcessor.class.getResourceAsStream("/schema.json")));
+            new JSONTokener(JSONValidatorProcessor.class.getResourceAsStream("/schema.json")));
     JSONObject jsonSubject = new JSONObject(
             new JSONTokener(record.get("/fields").getValue().toString()));
     LOG.info("JSON Subject: {}", jsonSubject);

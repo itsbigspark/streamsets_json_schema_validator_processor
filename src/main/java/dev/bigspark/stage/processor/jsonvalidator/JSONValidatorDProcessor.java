@@ -28,12 +28,12 @@ import com.streamsets.pipeline.api.StageDef;
     version = 1,
     label = "JSON Validator",
     description = "Validates JSON object records with a specified schema",
-    icon = "default.png",
+    icon = "logo.png",
     onlineHelpRefUrl = ""
 )
 @ConfigGroups(Groups.class)
 @GenerateResourceBundle
-public class SampleDProcessor extends SampleProcessor {
+public class JSONValidatorDProcessor extends JSONValidatorProcessor {
 
   @ConfigDef(
       required = true,

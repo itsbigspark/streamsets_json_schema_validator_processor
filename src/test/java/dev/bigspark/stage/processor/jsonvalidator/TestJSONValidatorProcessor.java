@@ -30,11 +30,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class TestSampleProcessor {
+public class TestJSONValidatorProcessor {
   @Test
   @SuppressWarnings("unchecked")
   public void testProcessor() throws StageException {
-    ProcessorRunner runner = new ProcessorRunner.Builder(SampleDProcessor.class)
+    ProcessorRunner runner = new ProcessorRunner.Builder(JSONValidatorDProcessor.class)
         .addConfiguration("config", "value")
         .addOutputLane("output")
         .build();
