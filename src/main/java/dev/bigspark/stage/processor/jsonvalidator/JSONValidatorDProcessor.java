@@ -47,7 +47,7 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
 
   @ConfigDef(
           required = true,
-          type = ConfigDef.Type.STRING,
+          type = ConfigDef.Type.TEXT,
           defaultValue = "default",
           label = "JSON Schema file",
           displayPosition = 10,
