@@ -11,6 +11,11 @@
     "hack_license": {
       "description": "A taxi driver's license number",
       "type": "string"
+    },
+    "fare_amount": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMinimum": true
     }
   },
   "required": [
