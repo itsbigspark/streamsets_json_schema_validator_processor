@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dev.bigspark.stage.lib.sample;
+package dev.bigspark.stage.lib.jsonvalidator;
 
 import com.streamsets.pipeline.api.ErrorCode;
 import com.streamsets.pipeline.api.GenerateResourceBundle;
@@ -25,8 +25,8 @@ import com.streamsets.pipeline.api.GenerateResourceBundle;
 @GenerateResourceBundle
 public enum Errors implements ErrorCode {
 
-  SAMPLE_00("A configuration is invalid because: {}"),
-  SAMPLE_01("The JSON object supplied is invalid: {}"),
+  JSON_VAL_00("A configuration is invalid because: {}"),
+  JSON_VAL_01("The JSON object supplied is invalid: {}"),
   ;
   private final String msg;
 

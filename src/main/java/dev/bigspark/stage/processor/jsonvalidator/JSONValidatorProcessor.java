@@ -20,7 +20,7 @@
 package dev.bigspark.stage.processor.jsonvalidator;
 
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
-import dev.bigspark.stage.lib.sample.Errors;
+import dev.bigspark.stage.lib.jsonvalidator.Errors;
 
 import com.streamsets.pipeline.api.Record;
 import com.streamsets.pipeline.api.StageException;
@@ -56,7 +56,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
     if (getConfig().equals("invalidValue")) {
       issues.add(
           getContext().createConfigIssue(
-              Groups.SAMPLE.name(), "config", Errors.SAMPLE_00, "Here's what's wrong..."
+              Groups.SAMPLE.name(), "config", Errors.JSON_VAL_00, "Here's what's wrong..."
           )
       );
     }
@@ -85,7 +85,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
       Schema schema = SchemaLoader.load(jsonSchema);
       schema.validate(jsonSubject);
     } catch (JSONException e) {
-      throw new OnRecordErrorException(record, Errors.SAMPLE_01, e);
+      throw new OnRecordErrorException(record, Errors.JSON_VAL_01, e);
     }
 
     LOG.info("Output record: {}", record);
