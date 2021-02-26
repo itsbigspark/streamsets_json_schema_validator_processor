@@ -49,7 +49,7 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
           required = true,
           type = ConfigDef.Type.TEXT,
           mode = ConfigDef.Mode.JSON,
-          defaultValue = "",
+          defaultValue = "{}",
           label = "JSON Schema",
           displayPosition = 10,
           group = "SAMPLE"
