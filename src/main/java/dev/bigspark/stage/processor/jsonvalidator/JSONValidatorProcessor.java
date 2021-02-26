@@ -95,7 +95,6 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
     try {
       JSONObject jsonSubject = new JSONObject(
               new JSONTokener(record.get(getJSONField()).getValue().toString()));
-      LOG.info("JSON Subject: {}", jsonSubject);
 
       this.schema.validate(jsonSubject);
     } catch (JSONException e) {
@@ -103,8 +102,6 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
     } catch (ValidationException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_03, e);
     }
-
-    LOG.info("Output record: {}", record);
 
     // This example is a no-op
     batchMaker.addRecord(record);
