@@ -41,6 +41,7 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
           mode = ConfigDef.Mode.JSON,
           defaultValue = "{}",
           label = "JSON Schema",
+          description = "Schema used to validate field with JSON object",
           displayPosition = 10,
           group = "SAMPLE"
   )
@@ -50,6 +51,7 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
           required = true,
           type = ConfigDef.Type.STRING,
           label = "JSON field",
+          description = "Name of the field to validate",
           displayPosition = 10,
           group = "SAMPLE"
   )
