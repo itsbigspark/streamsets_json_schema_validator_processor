@@ -45,6 +45,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
    */
   public abstract String getSchema();
   public abstract String getJSONField();
+  public abstract String getConfig();
 
   JSONObject jsonSchemaObject;
   Schema schema;
@@ -63,7 +64,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
       }  catch (JSONException e) {
         issues.add(
                 getContext().createConfigIssue(
-                        Groups.SAMPLE.name(), "config", Errors.JSON_VAL_01, "Here's what's wrong..."
+                        Groups.VALIDATOR.name(), "config", Errors.JSON_VAL_01, "Here's what's wrong..."
                 )
         );
       }

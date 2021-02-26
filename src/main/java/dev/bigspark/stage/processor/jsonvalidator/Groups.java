@@ -24,7 +24,7 @@ import com.streamsets.pipeline.api.Label;
 
 @GenerateResourceBundle
 public enum Groups implements Label {
-  SAMPLE("Sample"),
+  VALIDATOR("Validator"),
   ;
 
   private final String label;
