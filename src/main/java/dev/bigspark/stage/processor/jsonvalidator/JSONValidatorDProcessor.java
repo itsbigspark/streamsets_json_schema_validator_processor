@@ -36,16 +36,6 @@ import com.streamsets.pipeline.api.StageDef;
 public class JSONValidatorDProcessor extends JSONValidatorProcessor {
 
   @ConfigDef(
-      required = true,
-      type = ConfigDef.Type.STRING,
-      defaultValue = "default",
-      label = "JSON Validator Config",
-      displayPosition = 10,
-      group = "SAMPLE"
-  )
-  public String config;
-
-  @ConfigDef(
           required = true,
           type = ConfigDef.Type.TEXT,
           mode = ConfigDef.Mode.JSON,
@@ -64,12 +54,6 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
           group = "SAMPLE"
   )
   public String jsonField;
-
-  /** {@inheritDoc} */
-  @Override
-  public String getConfig() {
-    return config;
-  }
 
   /** {@inheritDoc} */
   @Override

@@ -43,7 +43,6 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
   /**
    * Gives access to the UI configuration of the stage provided by the {@link JSONValidatorDProcessor} class.
    */
-  public abstract String getConfig();
   public abstract String getSchema();
   public abstract String getJSONField();
 
@@ -56,13 +55,6 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
     // Validate configuration values and open any required resources.
     List<ConfigIssue> issues = super.init();
 
-    if (getConfig().equals("invalidValue")) {
-      issues.add(
-          getContext().createConfigIssue(
-              Groups.SAMPLE.name(), "config", Errors.JSON_VAL_00, "Here's what's wrong..."
-          )
-      );
-    }
       try {
         this.jsonSchemaObject = new JSONObject(
                 new JSONTokener(getSchema()));
