@@ -46,7 +46,8 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
   public abstract String getConfig();
   public abstract String getSchema();
 
-  JSONObject jsonSchema;
+  JSONObject jsonSchemaObject;
+  Schema schema;
 
   /** {@inheritDoc} */
   @Override
@@ -61,11 +62,18 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
           )
       );
     }
+      try {
+        this.jsonSchemaObject = new JSONObject(
+                new JSONTokener(getSchema()));
 
-    if (!(getSchema().equals("{}"))) {
-      jsonSchema = new JSONObject(
-              new JSONTokener(getSchema()));
-    }
+        this.schema = SchemaLoader.load(jsonSchemaObject);
+      }  catch (JSONException e) {
+        issues.add(
+                getContext().createConfigIssue(
+                        Groups.SAMPLE.name(), "config", Errors.JSON_VAL_01, "Here's what's wrong..."
+                )
+        );
+      }
 
     // If issues is not empty, the UI will inform the user of each configuration issue in the list.
     return issues;
@@ -88,12 +96,11 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
               new JSONTokener(record.get("/fields").getValue().toString()));
       LOG.info("JSON Subject: {}", jsonSubject);
 
-      Schema schema = SchemaLoader.load(jsonSchema);
-      schema.validate(jsonSubject);
+      this.schema.validate(jsonSubject);
     } catch (JSONException e) {
-      throw new OnRecordErrorException(record, Errors.JSON_VAL_01, e);
-    } catch (ValidationException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_02, e);
+    } catch (ValidationException e) {
+      throw new OnRecordErrorException(record, Errors.JSON_VAL_03, e);
     }
 
     LOG.info("Output record: {}", record);
