@@ -43,9 +43,10 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
    * Gives access to the UI configuration of the stage provided by the {@link JSONValidatorDProcessor} class.
    */
   public abstract String getConfig();
+  public abstract String getSchema();
 
   JSONObject jsonSchema = new JSONObject(
-          new JSONTokener(JSONValidatorProcessor.class.getResourceAsStream("/schema.json")));
+          new JSONTokener(getSchema()));
 
   /** {@inheritDoc} */
   @Override

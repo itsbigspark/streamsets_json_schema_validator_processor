@@ -62,4 +62,10 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
     return config;
   }
 
+  /** {@inheritDoc} */
+  @Override
+  public String getSchema() {
+    return schema;
+  }
+
 }
