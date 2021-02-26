@@ -45,8 +45,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
   public abstract String getConfig();
   public abstract String getSchema();
 
-  JSONObject jsonSchema = new JSONObject(
-          new JSONTokener(getSchema()));
+  JSONObject jsonSchema;
 
   /** {@inheritDoc} */
   @Override
@@ -60,6 +59,11 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
               Groups.SAMPLE.name(), "config", Errors.JSON_VAL_00, "Here's what's wrong..."
           )
       );
+    }
+
+    if (!(getSchema().equals("{}"))) {
+      jsonSchema = new JSONObject(
+              new JSONTokener(getSchema()));
     }
 
     // If issues is not empty, the UI will inform the user of each configuration issue in the list.
