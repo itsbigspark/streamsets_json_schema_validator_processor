@@ -59,7 +59,6 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
   @ConfigDef(
           required = true,
           type = ConfigDef.Type.STRING,
-          defaultValue = "",
           label = "JSON field",
           displayPosition = 10,
           group = "SAMPLE"
