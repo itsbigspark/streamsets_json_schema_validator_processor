@@ -45,6 +45,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
    */
   public abstract String getConfig();
   public abstract String getSchema();
+  public abstract String getJSONField();
 
   JSONObject jsonSchemaObject;
   Schema schema;
@@ -93,7 +94,7 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
 
     try {
       JSONObject jsonSubject = new JSONObject(
-              new JSONTokener(record.get("/fields").getValue().toString()));
+              new JSONTokener(record.get(getJSONField()).getValue().toString()));
       LOG.info("JSON Subject: {}", jsonSubject);
 
       this.schema.validate(jsonSubject);

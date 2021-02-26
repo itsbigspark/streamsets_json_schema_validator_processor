@@ -56,6 +56,16 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
   )
   public String schema;
 
+  @ConfigDef(
+          required = true,
+          type = ConfigDef.Type.STRING,
+          defaultValue = "",
+          label = "JSON field",
+          displayPosition = 10,
+          group = "SAMPLE"
+  )
+  public String jsonField;
+
   /** {@inheritDoc} */
   @Override
   public String getConfig() {
@@ -66,6 +76,12 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
   @Override
   public String getSchema() {
     return schema;
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public String getJSONField() {
+    return jsonField;
   }
 
 }
