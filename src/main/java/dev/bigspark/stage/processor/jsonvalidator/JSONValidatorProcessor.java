@@ -27,6 +27,7 @@ import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.base.SingleLaneRecordProcessor;
 
 import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,6 +92,8 @@ public abstract class JSONValidatorProcessor extends SingleLaneRecordProcessor {
       schema.validate(jsonSubject);
     } catch (JSONException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_01, e);
+    } catch (ValidationException e) {
+      throw new OnRecordErrorException(record, Errors.JSON_VAL_02, e);
     }
 
     LOG.info("Output record: {}", record);
