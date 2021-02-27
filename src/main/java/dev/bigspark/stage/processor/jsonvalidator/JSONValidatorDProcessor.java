@@ -23,6 +23,7 @@ import com.streamsets.pipeline.api.ConfigDef;
 import com.streamsets.pipeline.api.ConfigGroups;
 import com.streamsets.pipeline.api.GenerateResourceBundle;
 import com.streamsets.pipeline.api.StageDef;
+import com.streamsets.pipeline.api.FieldSelectorModel;
 
 @StageDef(
     version = 1,
@@ -59,12 +60,13 @@ public class JSONValidatorDProcessor extends JSONValidatorProcessor {
 
   @ConfigDef(
           required = true,
-          type = ConfigDef.Type.STRING,
+          type = ConfigDef.Type.MODEL,
           label = "JSON field",
           description = "Name of the field to validate",
           displayPosition = 10,
           group = "VALIDATOR"
   )
+  @FieldSelectorModel(singleValued = true)
   public String jsonField;
 
   /** {@inheritDoc} */

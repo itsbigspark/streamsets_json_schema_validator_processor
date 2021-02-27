@@ -24,8 +24,6 @@ import com.streamsets.pipeline.api.GenerateResourceBundle;
 
 @GenerateResourceBundle
 public enum Errors implements ErrorCode {
-
-  JSON_VAL_00("A configuration is invalid because: {}"),
   JSON_VAL_01("The schema supplied is an invalid JSON object: {}"),
   JSON_VAL_02("The JSON object supplied is invalid: {}"),
   JSON_VAL_03("Schema validation error: {}"),
