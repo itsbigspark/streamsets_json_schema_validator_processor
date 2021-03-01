@@ -20,7 +20,6 @@
   <groupId>dev.bigspark</groupId>
   <artifactId>jsonvalidator</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
 
   <properties>
     <streamsets.version>3.20.0</streamsets.version>
@@ -97,13 +96,35 @@
             <id>copy</id>
             <phase>package</phase>
             <goals>
-              <goal>copy-dependencies</goal>
+              <goal>copy</goal>
             </goals>
             <configuration>
-                <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                <overWriteReleases>false</overWriteReleases>
-                <overWriteSnapshots>false</overWriteSnapshots>
-                <overWriteIfNewer>true</overWriteIfNewer>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.github.everit-org.json-schema</groupId>
+                  <artifactId>org.everit.json.schema</artifactId>
+                  <version>1.12.2</version>
+                  <type>jar</type>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.json</groupId>
+                  <artifactId>json</artifactId>
+                  <version>20201115</version>
+                  <type>jar</type>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.damnhandy</groupId>
+                  <artifactId>handy-uri-templates</artifactId>
+                  <version>2.1.8</version>
+                  <type>jar</type>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>
+                /Users/joeykay9/Streamsets/streamsets-datacollector-3.21.0/user-libs/${project.artifactId}/lib
+              </outputDirectory>
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
               <!-- other configurations here -->
             </configuration>
           </execution>
