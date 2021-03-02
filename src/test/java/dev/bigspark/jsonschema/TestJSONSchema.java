@@ -6,9 +6,11 @@ import org.everit.json.schema.loader.SchemaLoader;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestJSONSchema {
+    @Ignore
     @Test
     public void givenInvalidInput_whenValidating_thenInvalid() throws ValidationException {
         JSONObject jsonSchema = new JSONObject(
