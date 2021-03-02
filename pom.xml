@@ -85,6 +85,15 @@
     </repository>
   </repositories>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub OWNER Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/itsbigspark/streamsets_json_schema_validator_processor
+      </url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <plugins>
       <plugin>
