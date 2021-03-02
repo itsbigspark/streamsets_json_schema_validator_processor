@@ -120,7 +120,7 @@
                 </artifactItem>
               </artifactItems>
               <outputDirectory>
-                ${outputDir}/${project.artifactId}/lib
+                ${targetDir}/${project.artifactId}/lib
               </outputDirectory>
               <overWriteReleases>true</overWriteReleases>
               <overWriteSnapshots>false</overWriteSnapshots>
@@ -148,7 +148,7 @@
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
               <outputDirectory>
-                ${outputDir}/${project.artifactId}/lib
+                ${targetDir}/${project.artifactId}/lib
               </outputDirectory>
             </configuration>
           </execution>
