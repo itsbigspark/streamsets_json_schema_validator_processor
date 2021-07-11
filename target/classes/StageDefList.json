@@ -1,0 +1,16 @@
+[
+ {
+	"name": "dev_bigspark_stage_processor_jsonvalidator_JsonValidatorDProcessor",
+	"type": "PROCESSOR",
+	"label": "JSON Validator",
+	"description": "Validates JSON object records with a specified schema",
+	"version": 1,
+	"statsAggregatorStage": false,
+	"errorStage": false,
+	"beta": false,
+	"tags": [],
+	"onlineHelpRefUrl": "",
+	"icon": "logo.png",
+	"connectionVerifierStage": false
+ }
+]

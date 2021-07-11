@@ -1,0 +1,16 @@
+PipelineStages.json
+dev/bigspark/stage/processor/jsonvalidator/JsonValidatorDProcessor.class
+dev/bigspark/stage/processor/jsonvalidator/JsonValidatorProcessor.class
+LineagePublishers.json
+CredentialStores.json
+Services.json
+Connections.json
+dev/bigspark/stage/processor/jsonvalidator/Groups.class
+ElDefinitions.json
+datacollector-resource-bundles.json
+Interceptors.json
+dev/bigspark/stage/lib/jsonvalidator/Errors.class
+StageDefList.json
+ConnectionVerifiers.json
+Delegates.json
+dev/bigspark/jsonschema/TestJsonSchema.class
