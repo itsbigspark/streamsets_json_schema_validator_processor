@@ -4,28 +4,28 @@ A custom streamsets data collector processor based on the
 
 The Json Schema Validator library relies on the [org.json or JSON-Java API](https://stleary.github.io/JSON-java/index.html) which enables the creation, manipulation and parsing of JSON data.
 
-##Installation
+## Installation
 The package is published right on this repository and can be downloaded into the user libs directory of your Streamsets Data Collector.
 
-##Usage
-###Configuration
+## Usage
+### Configuration
 To use the Json Validator Processor, there are two configuration properties that must be defined:
 - The JSON String Field config:- this represents the field from the incoming sdc record that contains the 'stringified' JSON data which needs to be validated. If the specified field contains an invalid JSON string, an exception will be thrown on pipeline validation.
   
 
 - The JSON Schema config: this allows the user to define the [draft-04](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04), [draft-06](https://datatracker.ietf.org/doc/html/draft-wright-json-schema-01) or [draft-07](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-validation-00) JSON schema that will be used to validate the JSON data captured by the JSON String Field.
 
-##Example Pipeline
+## Example Pipeline
 [Insert link to blog]()
 
-##Credits
-###Authors
+## Credits
+### Authors
 * [Joel Klo](https://github.com/joeykay9)
 * [Shaine Ismail](https://github.com/shainnif)
 
-###Helpful links
+### Helpful links
 * [Introduction to JSON Schema in Java](https://www.baeldung.com/introduction-to-json-schema-in-java)
 * [Introduction to JSON-Java (org.json)](https://www.baeldung.com/java-org-json)
 
-##License
+## License
 This project is licensed with the [Apache License 2.0](https://github.com/itsbigspark/streamsets_json_schema_validator_processor/blob/develop/LICENSE).
