@@ -30,6 +30,17 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
 
   @ConfigDef(
           required = true,
+          type = ConfigDef.Type.MODEL,
+          label = "JSON String Field",
+          description = "Name of the field to validate",
+          displayPosition = 10,
+          group = "VALIDATOR"
+  )
+  @FieldSelectorModel(singleValued = true)
+  public String jsonField;
+
+  @ConfigDef(
+          required = true,
           type = ConfigDef.Type.TEXT,
           mode = ConfigDef.Mode.JSON,
           defaultValue = "{}",
@@ -40,27 +51,16 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
   )
   public String schema;
 
-  @ConfigDef(
-          required = true,
-          type = ConfigDef.Type.MODEL,
-          label = "JSON field",
-          description = "Name of the field to validate",
-          displayPosition = 10,
-          group = "VALIDATOR"
-  )
-  @FieldSelectorModel(singleValued = true)
-  public String jsonField;
+  /** {@inheritDoc} */
+  @Override
+  public String getJSONField() {
+    return jsonField;
+  }
 
   /** {@inheritDoc} */
   @Override
   public String getSchema() {
     return schema;
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public String getJSONField() {
-    return jsonField;
   }
 
 }

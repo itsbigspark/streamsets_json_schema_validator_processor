@@ -41,8 +41,8 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
    *
    * @return the schema
    */
-  public abstract String getSchema();
   public abstract String getJSONField();
+  public abstract String getSchema();
 
   JSONObject jsonSchemaObject;
   Schema schema;
