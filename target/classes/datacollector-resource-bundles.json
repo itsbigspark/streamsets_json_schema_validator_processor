@@ -1,5 +1,0 @@
-[
-  "dev.bigspark.stage.processor.jsonvalidator.Groups",
-  "dev.bigspark.stage.lib.jsonvalidator.Errors",
-  "dev.bigspark.stage.processor.jsonvalidator.JsonValidatorDProcessor"
-]
