@@ -15,6 +15,7 @@ To use the Json Validator Processor, there are two configuration properties that
 
 - The JSON Schema config: this allows the user to define the [draft-04](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04), [draft-06](https://datatracker.ietf.org/doc/html/draft-wright-json-schema-01) or [draft-07](https://datatracker.ietf.org/doc/html/draft-handrews-json-schema-validation-00) JSON schema that will be used to validate the JSON data captured by the JSON String Field.
 
+
 ### Example Pipeline
 [Insert link to blog]()
 

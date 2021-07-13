@@ -96,7 +96,7 @@
   <distributionManagement>
     <repository>
       <id>github</id>
-      <name>GitHub OWNER Apache Maven Packages</name>
+      <name>GitHub Bigspark Apache Maven Packages</name>
       <url>https://maven.pkg.github.com/itsbigspark/streamsets_json_schema_validator_processor
       </url>
     </repository>
@@ -104,49 +104,49 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.2</version>
-        <executions>
-          <execution>
-            <id>copy</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>com.github.everit-org.json-schema</groupId>
-                  <artifactId>org.everit.json.schema</artifactId>
-                  <version>1.12.2</version>
-                  <type>jar</type>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>org.json</groupId>
-                  <artifactId>json</artifactId>
-                  <version>20201115</version>
-                  <type>jar</type>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>com.damnhandy</groupId>
-                  <artifactId>handy-uri-templates</artifactId>
-                  <version>2.1.8</version>
-                  <type>jar</type>
-                </artifactItem>
-              </artifactItems>
-              <outputDirectory>
-                ${targetDir}/${project.artifactId}/lib
-              </outputDirectory>
-              <overWriteReleases>true</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
-              <!-- other configurations here -->
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-dependency-plugin</artifactId>-->
+<!--        <version>3.1.2</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>copy</id>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>copy</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <artifactItems>-->
+<!--                <artifactItem>-->
+<!--                  <groupId>com.github.everit-org.json-schema</groupId>-->
+<!--                  <artifactId>org.everit.json.schema</artifactId>-->
+<!--                  <version>1.12.2</version>-->
+<!--                  <type>jar</type>-->
+<!--                </artifactItem>-->
+<!--                <artifactItem>-->
+<!--                  <groupId>org.json</groupId>-->
+<!--                  <artifactId>json</artifactId>-->
+<!--                  <version>20201115</version>-->
+<!--                  <type>jar</type>-->
+<!--                </artifactItem>-->
+<!--                <artifactItem>-->
+<!--                  <groupId>com.damnhandy</groupId>-->
+<!--                  <artifactId>handy-uri-templates</artifactId>-->
+<!--                  <version>2.1.8</version>-->
+<!--                  <type>jar</type>-->
+<!--                </artifactItem>-->
+<!--              </artifactItems>-->
+<!--              <outputDirectory>-->
+<!--                ${targetDir}/${project.artifactId}/lib-->
+<!--              </outputDirectory>-->
+<!--              <overWriteReleases>true</overWriteReleases>-->
+<!--              <overWriteSnapshots>false</overWriteSnapshots>-->
+<!--              <overWriteIfNewer>true</overWriteIfNewer>-->
+<!--              &lt;!&ndash; other configurations here &ndash;&gt;-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -180,6 +180,24 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-deploy-plugin</artifactId>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>deploy-file</id>-->
+<!--            <phase>deploy</phase>-->
+<!--            <goals>-->
+<!--              <goal>deploy-file</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <files></files>-->
+<!--              <url>https://maven.pkg.github.com/itsbigspark/streamsets_json_schema_validator_processor</url>-->
+<!--              <packaging>tar.gz</packaging>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 </project>
