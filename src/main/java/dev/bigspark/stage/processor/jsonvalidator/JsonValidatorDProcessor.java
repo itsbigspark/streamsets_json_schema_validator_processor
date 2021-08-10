@@ -30,6 +30,16 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
 
   @ConfigDef(
           required = true,
+          type = ConfigDef.Type.BOOLEAN,
+          label = "Record as JSON",
+          description = "Converts and uses full sdc record as JSON string",
+          displayPosition = 10,
+          group = "VALIDATOR"
+  )
+  public boolean recordAsJson;
+
+  @ConfigDef(
+          required = true,
           type = ConfigDef.Type.MODEL,
           label = "JSON String Field",
           description = "Name of the field to validate",
@@ -51,6 +61,13 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
   )
   public String schema;
 
+  /** {@inheritDoc}
+   * @return*/
+  @Override
+  public boolean getRecordAsJson() {
+    return recordAsJson;
+  }
+
   /** {@inheritDoc} */
   @Override
   public String getJSONField() {
@@ -59,7 +76,7 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
 
   /** {@inheritDoc} */
   @Override
-  public String getSchema() {
+  public String getJsonSchema() {
     return schema;
   }
 

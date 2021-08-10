@@ -16,6 +16,9 @@
 package dev.bigspark.stage.processor.jsonvalidator;
 
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
+import com.streamsets.pipeline.api.service.dataformats.DataFormatGeneratorService;
+import com.streamsets.pipeline.api.service.dataformats.DataGenerator;
+import com.streamsets.pipeline.api.service.dataformats.DataGeneratorException;
 import dev.bigspark.stage.lib.jsonvalidator.Errors;
 
 import com.streamsets.pipeline.api.Record;
@@ -30,6 +33,8 @@ import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
@@ -42,10 +47,11 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
    * @return the schema
    */
   public abstract String getJSONField();
-  public abstract String getSchema();
+  public abstract String getJsonSchema();
+  public abstract boolean getRecordAsJson();
 
   JSONObject jsonSchemaObject;
-  Schema schema;
+  Schema jsonSchema;
 
   /** {@inheritDoc} */
   @Override
@@ -55,9 +61,9 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
 
     try {
       this.jsonSchemaObject = new JSONObject(
-              new JSONTokener(getSchema()));
+              new JSONTokener(getJsonSchema()));
 
-      this.schema = SchemaLoader.load(jsonSchemaObject);
+      this.jsonSchema = SchemaLoader.load(jsonSchemaObject);
     }  catch (JSONException e) {
       issues.add(
               getContext().createConfigIssue(
@@ -82,15 +88,31 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
   protected void process(Record record, SingleLaneBatchMaker batchMaker) throws StageException {
     LOG.info("Processing a record: {}", record);
 
-    try {
-      JSONObject jsonSubject = new JSONObject(
-              new JSONTokener(record.get(getJSONField()).getValue().toString()));
+    JSONObject jsonSubject = new JSONObject();
 
-      this.schema.validate(jsonSubject);
+    try {
+      if(!getRecordAsJson())
+        jsonSubject = new JSONObject(
+                new JSONTokener(record.get(getJSONField()).getValue().toString()));
+      else {
+        // Serialize record to byte array
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        DataGenerator generator = getContext().getService(DataFormatGeneratorService.class).getGenerator(outputStream);
+        generator.write(record);
+        generator.close();
+        String output = outputStream.toString();
+
+        jsonSubject = new JSONObject(
+                new JSONTokener(output));
+      }
+
+      this.jsonSchema.validate(jsonSubject);
     } catch (JSONException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_02, e);
     } catch (ValidationException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_03, e);
+    } catch (IOException | DataGeneratorException e) {
+      e.printStackTrace();
     }
 
     // This example is a no-op
