@@ -15,6 +15,7 @@
  */
 package dev.bigspark.stage.processor.jsonvalidator;
 
+import com.streamsets.pipeline.api.Field;
 import com.streamsets.pipeline.api.base.OnRecordErrorException;
 import com.streamsets.pipeline.api.service.dataformats.DataFormatGeneratorService;
 import com.streamsets.pipeline.api.service.dataformats.DataGenerator;
@@ -22,6 +23,7 @@ import com.streamsets.pipeline.api.service.dataformats.DataGeneratorException;
 import dev.bigspark.stage.lib.jsonvalidator.Errors;
 
 import com.streamsets.pipeline.api.Record;
+import com.streamsets.pipeline.api.service.dataformats.DataGenerator;
 import com.streamsets.pipeline.api.StageException;
 import com.streamsets.pipeline.api.base.SingleLaneRecordProcessor;
 import org.everit.json.schema.Schema;
@@ -35,7 +37,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
 
@@ -64,10 +69,19 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
               new JSONTokener(getJsonSchema()));
 
       this.jsonSchema = SchemaLoader.load(jsonSchemaObject);
+
+      if(!getRecordAsJson() && getJSONField().isEmpty())
+        throw new IllegalStateException();
     }  catch (JSONException e) {
       issues.add(
               getContext().createConfigIssue(
                       Groups.VALIDATOR.name(), "schema", Errors.JSON_VAL_01, "Here's what's wrong..."
+              )
+      );
+    } catch (IllegalStateException e) {
+      issues.add(
+              getContext().createConfigIssue(
+                      Groups.VALIDATOR.name(), "jsonField", Errors.JSON_VAL_04, "Here's what's wrong..."
               )
       );
     }
@@ -95,15 +109,16 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
         jsonSubject = new JSONObject(
                 new JSONTokener(record.get(getJSONField()).getValue().toString()));
       else {
-        // Serialize record to byte array
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        DataGenerator generator = getContext().getService(DataFormatGeneratorService.class).getGenerator(outputStream);
-        generator.write(record);
-        generator.close();
-        String output = outputStream.toString();
+        Map<String, String> map = new HashMap<>();
 
-        jsonSubject = new JSONObject(
-                new JSONTokener(output));
+        //Convert record to Map<String, String>
+        Map<String, Field> output = record.get().getValueAsMap();
+        output.forEach((key, value) -> {
+          map.put(key, value.getValueAsString());
+        });
+
+        //Convert map to JSON object
+        jsonSubject = new JSONObject(map);
       }
 
       this.jsonSchema.validate(jsonSubject);
@@ -111,11 +126,8 @@ public abstract class JsonValidatorProcessor extends SingleLaneRecordProcessor {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_02, e);
     } catch (ValidationException e) {
       throw new OnRecordErrorException(record, Errors.JSON_VAL_03, e);
-    } catch (IOException | DataGeneratorException e) {
-      e.printStackTrace();
     }
 
-    // This example is a no-op
     batchMaker.addRecord(record);
   }
 

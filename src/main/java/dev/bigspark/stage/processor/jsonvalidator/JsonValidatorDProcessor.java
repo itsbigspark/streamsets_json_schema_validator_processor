@@ -16,6 +16,9 @@
 package dev.bigspark.stage.processor.jsonvalidator;
 
 import com.streamsets.pipeline.api.*;
+import com.streamsets.pipeline.api.service.ServiceConfiguration;
+import com.streamsets.pipeline.api.service.ServiceDependency;
+import com.streamsets.pipeline.api.service.dataformats.DataFormatGeneratorService;
 
 @StageDef(
         version = 1,
@@ -31,7 +34,7 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
   @ConfigDef(
           required = true,
           type = ConfigDef.Type.BOOLEAN,
-          label = "Record as JSON",
+          label = "Record as JSON String",
           description = "Converts and uses full sdc record as JSON string",
           displayPosition = 10,
           group = "VALIDATOR"
@@ -42,7 +45,7 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
           required = true,
           type = ConfigDef.Type.MODEL,
           label = "JSON String Field",
-          description = "Name of the field to validate",
+          description = "Field containing JSON string to validate",
           displayPosition = 10,
           group = "VALIDATOR"
   )
@@ -71,7 +74,7 @@ public class JsonValidatorDProcessor extends JsonValidatorProcessor {
   /** {@inheritDoc} */
   @Override
   public String getJSONField() {
-    return jsonField;
+      return jsonField;
   }
 
   /** {@inheritDoc} */
