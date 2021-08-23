@@ -9,7 +9,9 @@ The package is published right on this repository and can be downloaded into the
 
 ## Usage
 ### Configuration
-To use the Json Validator Processor, there are two configuration properties that must be defined:
+To use the Json Validator Processor, there are two of three configuration properties that must be defined:
+- The Record as JSON String config:- if checked, this config option converts the full streamsets data collector (sdc) record into the JSON string which will be validated. If unchecked, the processor will perform the validation on the field specified by the JSON String Field config option.
+
 - The JSON String Field config:- this represents the field from the incoming sdc record that contains the 'stringified' JSON data which needs to be validated. If the specified field contains an invalid JSON string, an exception will be thrown on pipeline validation.
   
 
