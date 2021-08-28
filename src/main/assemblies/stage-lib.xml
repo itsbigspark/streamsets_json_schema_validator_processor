@@ -27,16 +27,28 @@
   <includeBaseDirectory>false</includeBaseDirectory>
 
   <fileSets>
+    <fileSet>
+      <directory>${project.build.directory}</directory>
+      <outputDirectory>/${project.artifactId}/lib</outputDirectory>
+      <includes>
+        <include>${project.build.finalName}.jar</include>
+      </includes>
+    </fileSet>
   </fileSets>
 
   <dependencySets>
     <dependencySet>
       <useProjectArtifact>true</useProjectArtifact>
       <useTransitiveDependencies>true</useTransitiveDependencies>
-      <useTransitiveFiltering>true</useTransitiveFiltering>
+      <useTransitiveFiltering>false</useTransitiveFiltering>
       <outputDirectory>/${project.artifactId}/lib</outputDirectory>
       <unpack>false</unpack>
       <scope>runtime</scope>
+      <includes>
+        <include>com.github.everit-org.json-schema:org.everit.json.schema</include>
+        <include>com.damnhandy:handy-uri-templates</include>
+        <include>org.json:json</include>
+      </includes>
       <excludes>
         <!-- Jython must be packaged differently. -->
         <exclude>org.python:jython-standalone</exclude>
@@ -46,6 +58,7 @@
              avail in SDC distro at SDC/root-lib/
         -->
         <exclude>org.xerial.snappy:snappy-java</exclude>
+<!--        <exclude>commons-*</exclude>-->
       </excludes>
     </dependencySet>
   </dependencySets>

@@ -24,6 +24,7 @@ public enum Errors implements ErrorCode {
   JSON_VAL_01("The schema supplied is an invalid JSON object: {}"),
   JSON_VAL_02("The JSON object supplied is invalid: {}"),
   JSON_VAL_03("Schema validation error: {}"),
+  JSON_VAL_04("The JSON String field cannot be empty when the Record as JSON String option is unchecked: {}"),
   ;
   private final String msg;
 
