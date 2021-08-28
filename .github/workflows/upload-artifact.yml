@@ -4,9 +4,6 @@
 name: Maven Package
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [created]
 
@@ -36,9 +33,3 @@ jobs:
       with:
         name: json validator 1.0
         path: "target/*.tar.gz"
-      
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -DskipTests -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
