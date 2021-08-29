@@ -5,7 +5,7 @@ A custom streamsets data collector processor based on the
 The Json Schema Validator library relies on the [org.json or JSON-Java API](https://stleary.github.io/JSON-java/index.html) which enables the creation, manipulation and parsing of JSON data.
 
 ## Installation
-The package is published right on this repository and can be downloaded into the user libs directory of your Streamsets Data Collector.
+The binary is available right [here](https://github.com/itsbigspark/streamsets_json_schema_validator_processor/releases/download/v1.0.0-rc.1/json_validator_1.0.zip) on this repository and can be downloaded into the user libs directory of your Streamsets Data Collector.
 
 ## Usage
 ### Configuration
