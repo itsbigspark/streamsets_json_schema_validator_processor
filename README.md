@@ -25,7 +25,7 @@ To use the Json Validator Processor, there are two of three configuration proper
 
 Create a Streamsets Environment:
 
-[image1](screenshots/image1.png)
+![image1](screenshots/image1.png)
 
 ## Credits
 ### Authors
