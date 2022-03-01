@@ -21,6 +21,12 @@ To use the Json Validator Processor, there are two of three configuration proper
 ### Example Pipeline
 [Insert link to blog]()
 
+### Streamsets setup
+
+Create a Streamsets Environment:
+
+[image1](screenshots/image1.png)
+
 ## Credits
 ### Authors
 * [Joel Klo](https://github.com/joeykay9)
