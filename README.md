@@ -222,6 +222,8 @@ This time there will be no errors because the type of the fare_amount field from
 
 ![image48](screenshots/image48.png)
 
+Blog: [bigspark blog](https://bigspark.dev/blog)
+
 ## Credits
 ### Authors
 * [Joel Klo](https://github.com/joeykay9)
