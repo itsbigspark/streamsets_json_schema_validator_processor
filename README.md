@@ -7,6 +7,8 @@ The Json Schema Validator library relies on the [org.json or JSON-Java API](http
 ## Installation
 The binary is available right [here](https://github.com/itsbigspark/streamsets_json_schema_validator_processor/releases/download/v1.0.0-rc.1/json_validator_1.0.zip) on this repository and can be downloaded and extracted into the user libs directory of your Streamsets Data Collector.
 
+The data file is available [here](https://joelklosbucket.s3.us-east-2.amazonaws.com/nyc_taxi_data.csv).
+
 ## Usage
 ### Configuration
 To use the Json Validator Processor, there are two of three configuration properties that must be defined:
