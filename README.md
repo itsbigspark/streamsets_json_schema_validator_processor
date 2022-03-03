@@ -22,11 +22,11 @@ To use the Json Validator Processor, there are two of three configuration proper
 
 ### Example Pipeline
 
-[Confluence page](https://bigspark-dev.atlassian.net/wiki/spaces/BIGSPARK/blog/2021/08/30/831914113/The+JSON+Validator+A+Custom+StreamSets+Data+Collector+Processor)
+[The JSON Validator: A Custom StreamSets Data Collector Processor](https://bigspark-dev.atlassian.net/wiki/spaces/BIGSPARK/blog/2021/08/30/831914113/The+JSON+Validator+A+Custom+StreamSets+Data+Collector+Processor)
 
 ### Video
 
-JSON Validator Streamsets setup: [bigspark blog](https://bigspark.dev/blog/json-validator-custom-processor-setup-in-streamsets)
+[JSON Validator Custom Processor Setup in Streamsets](https://bigspark.dev/blog/json-validator-custom-processor-setup-in-streamsets)
 
 ### Streamsets setup
 
