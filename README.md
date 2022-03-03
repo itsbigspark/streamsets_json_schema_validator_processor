@@ -21,7 +21,12 @@ To use the Json Validator Processor, there are two of three configuration proper
 
 
 ### Example Pipeline
-[Insert link to blog]()
+
+[Confluence page](https://bigspark-dev.atlassian.net/wiki/spaces/BIGSPARK/blog/2021/08/30/831914113/The+JSON+Validator+A+Custom+StreamSets+Data+Collector+Processor)
+
+### Video
+
+JSON Validator Streamsets setup: [bigspark blog](https://bigspark.dev/blog/json-validator-custom-processor-setup-in-streamsets)
 
 ### Streamsets setup
 
@@ -223,8 +228,6 @@ This time there will be no errors because the type of the fare_amount field from
 ![image47](screenshots/image47.png)
 
 ![image48](screenshots/image48.png)
-
-Blog: [bigspark blog](https://bigspark.dev/blog)
 
 ## Credits
 ### Authors
